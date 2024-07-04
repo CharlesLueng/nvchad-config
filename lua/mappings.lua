@@ -41,6 +41,8 @@ map("n", "<leader>wk", "<C-w>k", { desc = "move top" })
 map("n", "<leader>ws", "<C-w>s", { desc = "split" })
 map("n", "<leader>wv", "<C-w>v", { desc = "vsplit" })
 map("n", "<leader>wc", "<C-w>c", { desc = "close window" })
+map("n", "<leader>wm", "<CMD>TZFocus<CR>", {desc = "max window"})
+map("n", "<leader>w=", "<C-w>=", {desc = "window average"})
 
 -- buffer management
 map("n", "<leader>bb", "<cmd>enew<CR>", { desc = "buffer new" })

@@ -10,7 +10,7 @@ return {
     "Pocco81/TrueZen.nvim",
     cmd = { "TZAtaraxis", "TZMinimalist", "TZFocus" },
     config = function()
-      require "custom.configs.truezen" -- just an example path
+      require "configs.truezen" -- just an example path
     end,
   },
 
@@ -106,7 +106,7 @@ return {
       ui = {
         -- 关闭烦人的CodeAction的小灯泡，哪哪都是小灯泡
         -- 取而代之则使用自定义高亮行, SignColumn 和 高亮行
-        code_action = " ",
+        -- code_action = " ",
       },
     },
     dependencies = {
@@ -217,6 +217,57 @@ return {
         desc = "Flash Treesitter",
       },
     },
+  },
+  {
+    "nvim-telescope/telescope.nvim",
+    opts = function()
+      local conf = require "nvchad.configs.telescope"
+      local actions = require "telescope.actions"
+      local action_layout = require "telescope.actions.layout"
+
+      conf.defaults.mappings.i = {
+        ["<Esc>"] = require("telescope.actions").close,
+        ["<A-p>"] = require("telescope.actions.layout").toggle_preview,
+        ["<C-s>"] = require("telescope.actions").select_horizontal,
+      }
+
+      conf.defaults.mappings.n = {
+        ["<A-p>"] = require("telescope.actions.layout").toggle_preview,
+        ["<C-s>"] = require("telescope.actions").select_horizontal,
+      }
+
+      conf.defaults.file_ignore_patterns = {
+        "codegen.ts",
+        ".git",
+        "lazy-lock.json",
+        "*-lock.yaml",
+        "node_modules",
+        "%.lock",
+        "build",
+        "release",
+        "bin",
+        "obj",
+        "*_modules",
+        "dist-electron",
+        "dist",
+        ".vscode",
+        "App_Data",
+      }
+
+      conf.pickers = {}
+      conf.pickers.buffers = {}
+
+      conf.pickers.buffers.mappings = {
+        i = {
+          ["<c-d>"] = actions.delete_buffer + actions.move_to_bottom,
+        },
+      }
+
+      -- or
+      -- table.insert(conf.defaults.mappings.i, your table)
+
+      return conf
+    end,
   },
   {
     "folke/todo-comments.nvim",
@@ -428,6 +479,68 @@ return {
       local map = vim.keymap
 
       map.set("n", "<Leader>lc", "<cmd>Neogen<cr>", { desc = "Generate Doc Comment" })
+    end,
+  },
+  {
+    "numToStr/Comment.nvim",
+    lazy = false,
+    opts = {
+      ---Add a space b/w comment and the line
+      padding = true,
+      ---Whether the cursor should stay at its position
+      sticky = true,
+      ---Lines to be ignored while (un)comment
+      ignore = nil,
+      ---LHS of toggle mappings in NORMAL mode
+      toggler = {
+        ---Line-comment toggle keymap
+        line = "gcc",
+        ---Block-comment toggle keymap
+        block = "gbc",
+      },
+      ---LHS of operator-pending mappings in NORMAL and VISUAL mode
+      opleader = {
+        ---Line-comment keymap
+        line = "gc",
+        ---Block-comment keymap
+        block = "gb",
+      },
+      ---LHS of extra mappings
+      extra = {
+        ---Add comment on the line above
+        above = "gcO",
+        ---Add comment on the line below
+        below = "gco",
+        ---Add comment at the end of line
+        eol = "gcA",
+      },
+      ---Enable keybindings
+      ---NOTE: If given `false` then the plugin won't create any mappings
+      mappings = {
+        ---Operator-pending mapping; `gcc` `gbc` `gc[count]{motion}` `gb[count]{motion}`
+        basic = true,
+        ---Extra mapping; `gco`, `gcO`, `gcA`
+        extra = true,
+      },
+      ---Function to call before (un)comment
+      pre_hook = nil,
+      ---Function to call after (un)comment
+      post_hook = nil,
+    },
+  },
+  {
+    "MattesGroeger/vim-bookmarks",
+    keys = { "<leader>mc", "mm", "mi", "mn", "mp", "ma", "mc", "mx" },
+    event = { "BufReadPre" },
+    -- dependencies = {
+    -- "tom-anders/telescope-vim-bookmarks.nvim",
+    -- "nvim-telescope/telescope.nvim",
+    -- },
+    config = function()
+      vim.g.bookmark_sign = "♥"
+      vim.g.bookmark_highlight_lines = 1
+
+      -- require("telescope").load_extension "vim_bookmarks"
     end,
   },
 }
