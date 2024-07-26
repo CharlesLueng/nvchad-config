@@ -6,8 +6,12 @@ local o = vim.o
 o.relativenumber = true
 o.scrolloff = 5
 o.sidescrolloff = 5
--- o.cursorlineopt ='both' -- to enable cursorline!
 
+vim.opt.clipboard:append "unnamedplus"
+
+-- o.clipboard:append "unnamedplus"
+
+-- o.cursorlineopt ='both' -- to enable cursorline!
 
 -- 取消自动注释
 -- vim.cmd("autocmd BufEnter * set formatoptions-=cro")

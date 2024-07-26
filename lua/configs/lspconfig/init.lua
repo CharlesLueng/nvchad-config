@@ -94,7 +94,7 @@ M.on_attach = function(client, bufnr)
   M.load_keymaps(bufnr)
 
   -- setup signature popup
-  if conf.signature and client ~= nil and client.server_capabilities.signatureHelpProvider then
+  if conf ~= nil and conf.signature and client ~= nil and client.server_capabilities.signatureHelpProvider then
     require("nvchad.lsp.signature").setup(client, bufnr)
   end
 end
@@ -136,7 +136,7 @@ M.capabilities.textDocument.foldingRange = {
 }
 
 local lspconfig = require "lspconfig"
-local servers = { "omnisharp", "dartls", "lua_ls", "pyright", "tsserver", "volar", "vuels" }
+local servers = { "omnisharp", "dartls", "lua_ls", "pyright", "tsserver", "volar", "vuels", "cssls" }
 
 -- lsps with default config
 for _, lsp in ipairs(servers) do

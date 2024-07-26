@@ -51,6 +51,7 @@ return {
         "isort",
         "black",
         "typescript-language-server",
+        "css-lsp",
       },
     },
   },
@@ -197,8 +198,26 @@ return {
   },
   {
     "folke/flash.nvim",
-    event = "VeryLazy",
-    opts = {},
+    -- event = "VeryLazy",
+    -- version = "1.18.3",
+    lazy = false,
+    opts = {
+      label = {
+        rainbow = {
+          enabled = false,
+          -- number between 1 and 9
+          shade = 5,
+        },
+      },
+      highlight = {
+        groups = {
+          match = "Search",
+          current = "LspSignatureActiveParameter",
+          backdrop = "FlashBackdrop",
+          label = "PmenuSel",
+        },
+      },
+    },
     keys = {
       {
         "s",
