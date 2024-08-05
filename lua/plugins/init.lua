@@ -123,16 +123,27 @@ return {
       require("which-key").setup(opts)
 
       -- your custom stuff
-      require("which-key").register({
-        f = { name = "file" },
-        g = { name = "git" },
-        r = { name = "run" },
-        l = { name = "lsp" },
-        t = { name = "terminal" },
-        b = { name = "buffer" },
-        w = { name = "window" },
-        ["<tab>"] = { name = "tab" },
-      }, { prefix = "<leader>" })
+      -- require("which-key").register({
+      --   f = { name = "file" },
+      --   g = { name = "git" },
+      --   r = { name = "run" },
+      --   l = { name = "lsp" },
+      --   t = { name = "terminal" },
+      --   b = { name = "buffer" },
+      --   w = { name = "window" },
+      --   ["<tab>"] = { name = "tab" },
+      -- }, { prefix = "<leader>" })
+
+      require("which-key").add({
+        {"<leader>f", group = "file" },
+        {"<leader>g", group = "git"},
+        {"<leader>r" , group = "run" },
+        {"<leader>l",  group = "lsp" },
+        {"<leader>t", group = "terminal" },
+        {"<leader>b", group = "buffer" },
+        {"<leader>w", group = "window" },
+        {"<leader><tab>", group = "tab" },
+      })
     end,
   },
   -- git stuff

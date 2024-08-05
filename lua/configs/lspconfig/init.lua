@@ -8,9 +8,12 @@ M.load_keymaps = function(bufnr)
   end
 
   -- your custom stuff
-  require("which-key").register({
-    l = { name = "lsp" },
-  }, { prefix = "<leader>" })
+  -- require("which-key").register({
+  --   l = { name = "lsp" },
+  -- }, { prefix = "<leader>" })
+  require("which-key").add {
+    { "<leader>l", group = "lsp" },
+  }
 
   -- map("n", "K", function()
   -- 	vim.lsp.buf.hover()
