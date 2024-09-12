@@ -36,5 +36,6 @@
   "todo-comments.nvim": { "branch": "main", "commit": "8f45f353dc3649cb9b44cecda96827ea88128584" },
   "ui": { "branch": "v2.5", "commit": "967d8b27811f3b2a2ac3fd2de27e5a4992dc0770" },
   "vim-bookmarks": { "branch": "master", "commit": "9cc5fa7ecc23b052bd524d07c85356c64b92aeef" },
-  "which-key.nvim": { "branch": "main", "commit": "6c1584eb76b55629702716995cca4ae2798a9cca" }
+  "which-key.nvim": { "branch": "main", "commit": "6c1584eb76b55629702716995cca4ae2798a9cca" },
+  "workspaces.nvim": { "branch": "master", "commit": "0b03d3f2ffe38729b1792905ec447405ed76cb6e" }
 }

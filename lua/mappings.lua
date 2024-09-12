@@ -59,6 +59,11 @@ map("n", "<leader>bc", function()
   require("nvchad.tabufline").close_buffer()
 end, { desc = "buffer close" })
 
+map("n", "<leader>bo", function ()
+  require("nvchad.tabufline").closeAllBufs(false)
+end, {desc = "buff close other"})
+
+
 -- telescope
 map("n", "<leader>fk", function()
   vim.cmd("WhichKey " .. vim.fn.input "WhichKey: ")

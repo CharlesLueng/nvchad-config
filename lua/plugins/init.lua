@@ -134,16 +134,16 @@ return {
       --   ["<tab>"] = { name = "tab" },
       -- }, { prefix = "<leader>" })
 
-      require("which-key").add({
-        {"<leader>f", group = "file" },
-        {"<leader>g", group = "git"},
-        {"<leader>r" , group = "run" },
-        {"<leader>l",  group = "lsp" },
-        {"<leader>t", group = "terminal" },
-        {"<leader>b", group = "buffer" },
-        {"<leader>w", group = "window" },
-        {"<leader><tab>", group = "tab" },
-      })
+      require("which-key").add {
+        { "<leader>f", group = "file" },
+        { "<leader>g", group = "git" },
+        { "<leader>r", group = "run" },
+        { "<leader>l", group = "lsp" },
+        { "<leader>t", group = "terminal" },
+        { "<leader>b", group = "buffer" },
+        { "<leader>w", group = "window" },
+        { "<leader><tab>", group = "tab" },
+      }
     end,
   },
   -- git stuff
@@ -293,6 +293,13 @@ return {
         },
       }
 
+      conf.extensions.workspace = {
+        -- keep insert mode after selection in the picker, default is false
+        keep_insert = true,
+        -- Highlight group used for the path in the picker, default is "String"
+        path_hl = "String",
+      }
+
       -- or
       -- table.insert(conf.defaults.mappings.i, your table)
 
@@ -411,7 +418,8 @@ return {
           end
 
           local function get_diagnostic_label()
-            local icons = { error = "", warn = "", info = "", hint = "" }
+            -- local icons = { error = "", warn = "", info = "", hint = "" }
+            local icons = { error = "", warn = "", info = "", hint = "󱧡" }
             local label = {}
 
             for severity, icon in pairs(icons) do
@@ -573,4 +581,64 @@ return {
       -- require("telescope").load_extension "vim_bookmarks"
     end,
   },
+  {
+    "natecraddock/workspaces.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim" },
+    cmd = {"WorkspacesAdd", "WorkspacesAddDir", "WorkspacesRemove", "WorkspacesRemoveDir", "WorkspacesRename", "WorkspacesList", "WorkspacesListDirs", "WorkspacesOpen", "WorkspacesSyncDirs"},
+    opts = {
+      -- path to a file to store workspaces data in
+      -- on a unix system this would be ~/.local/share/nvim/workspaces
+      path = vim.fn.stdpath "data" .. "/workspaces",
+
+      -- to change directory for nvim (:cd), or only for window (:lcd)
+      -- deprecated, use cd_type instead
+      -- global_cd = true,
+
+      -- controls how the directory is changed. valid options are "global", "local", and "tab"
+      --   "global" changes directory for the neovim process. same as the :cd command
+      --   "local" changes directory for the current window. same as the :lcd command
+      --   "tab" changes directory for the current tab. same as the :tcd command
+      --
+      -- if set, overrides the value of global_cd
+      cd_type = "global",
+
+      -- sort the list of workspaces by name after loading from the workspaces path.
+      sort = true,
+
+      -- sort by recent use rather than by name. requires sort to be true
+      mru_sort = true,
+
+      -- option to automatically activate workspace when opening neovim in a workspace directory
+      auto_open = false,
+
+      -- option to automatically activate workspace when changing directory not via this plugin
+      auto_dir = false,
+
+      -- enable info-level notifications after adding or removing a workspace
+      notify_info = true,
+
+      -- lists of hooks to run after specific actions
+      -- hooks can be a lua function or a vim command (string)
+      -- lua hooks take a name, a path, and an optional state table
+      -- if only one hook is needed, the list may be omitted
+      hooks = {
+        add = {},
+        remove = {},
+        rename = {},
+        open_pre = {},
+        open = {},
+      },
+    },
+    config = function(_, opts)
+      require("workspaces").setup(opts)
+
+      require("telescope").load_extension "workspaces"
+    end,
+  },
+  {
+    "norcalli/nvim-colorizer.lua",
+    config = function ()
+      require("colorizer").setup();
+    end
+  }
 }
