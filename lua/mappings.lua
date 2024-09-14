@@ -41,8 +41,8 @@ map("n", "<leader>wk", "<C-w>k", { desc = "move top" })
 map("n", "<leader>ws", "<C-w>s", { desc = "split" })
 map("n", "<leader>wv", "<C-w>v", { desc = "vsplit" })
 map("n", "<leader>wc", "<C-w>c", { desc = "close window" })
-map("n", "<leader>wm", "<CMD>TZFocus<CR>", {desc = "max window"})
-map("n", "<leader>w=", "<C-w>=", {desc = "window average"})
+map("n", "<leader>wm", "<CMD>TZFocus<CR>", { desc = "max window" })
+map("n", "<leader>w=", "<C-w>=", { desc = "window average" })
 
 -- buffer management
 map("n", "<leader>bb", "<cmd>enew<CR>", { desc = "buffer new" })
@@ -59,10 +59,9 @@ map("n", "<leader>bc", function()
   require("nvchad.tabufline").close_buffer()
 end, { desc = "buffer close" })
 
-map("n", "<leader>bo", function ()
+map("n", "<leader>bo", function()
   require("nvchad.tabufline").closeAllBufs(false)
-end, {desc = "buff close other"})
-
+end, { desc = "buff close other" })
 
 -- telescope
 map("n", "<leader>fk", function()
@@ -92,4 +91,31 @@ map("n", "<leader><tab>n", "<cmd>tabnext<cr>", { desc = "tab goto next" })
 map("n", "<leader><tab>p", "<cmd>tabprev<cr>", { desc = "tab goto prev" })
 map("n", "<leader><tab>c", "<cmd>tabclose<cr>", { desc = "tab close" })
 
+-- Obsidian
+map("n", "<leader>of", "<cmd>ObsidianQuickSwitch<cr>", { desc = "quick query" })
+map("n", "<leader>os", "<cmd>ObsidianSearch<cr>", { desc = "search" })
+
+-- markdown
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function()
+    map("n", "<leader>lpt", "<cmd>MarkdownPreviewToggle<cr>", { desc = "preview toggle", buffer = true })
+    map("n", "<leader>lpp", "<cmd>MarkdownPreview<cr>", { desc = "preview", buffer = true })
+    map("n", "<leader>lps", "<cmd>MarkdownPreviewStop<cr>", { desc = "preview stop", buffer = true })
+
+    -- Obsidian
+    map("n", "<leader>olv", "<cmd>ObsidianFollowLink vsplit<cr>", { desc = "follow link vsplit", buffer = true })
+    map("n", "<leader>ols", "<cmd>ObsidianFollowLink hsplit<cr>", { desc = "follow link hsplit", buffer = true })
+    map("n", "<leader>ola", "<cmd>ObsidianLinks<cr>", { desc = "links on current buffer", buffer = true })
+    map("n", "<leader>ot", "<cmd>ObsidianToday<cr>", { desc = "open/create daily note", buffer = true })
+    map("n", "<leader>oT", "<cmd>ObsidianTOC<cr>", { desc = "TOC", buffer = true })
+    map("n", "<leader>opi", "<cmd>ObsidianPasteImg<cr>", { desc = "paste image", buffer = true })
+    map(
+      "n",
+      "<leader>oc",
+      "<cmd>ObsidianToggleCheckbox<cr>",
+      { desc = "cycle through checkbox options", buffer = true }
+    )
+  end,
+})
 -- terimal management
