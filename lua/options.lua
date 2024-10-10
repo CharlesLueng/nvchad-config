@@ -51,3 +51,6 @@ end
 
 -- Obsidian
 vim.opt.conceallevel = 1
+
+
+require("base46").toggle_transparency()

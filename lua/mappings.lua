@@ -102,6 +102,8 @@ vim.api.nvim_create_autocmd("FileType", {
     map("n", "<leader>lpt", "<cmd>MarkdownPreviewToggle<cr>", { desc = "preview toggle", buffer = true })
     map("n", "<leader>lpp", "<cmd>MarkdownPreview<cr>", { desc = "preview", buffer = true })
     map("n", "<leader>lps", "<cmd>MarkdownPreviewStop<cr>", { desc = "preview stop", buffer = true })
+    map("n", "<leader>lr", "<cmd>RenderMarkdown<cr>", { desc = "Render Markdown", buffer = true })
+    map("n", "<leader>ll", "<cmd>RenderMarkdown log<cr>", { desc = "Render Markdown Log", buffer = true })
 
     -- Obsidian
     map("n", "<leader>olv", "<cmd>ObsidianFollowLink vsplit<cr>", { desc = "follow link vsplit", buffer = true })

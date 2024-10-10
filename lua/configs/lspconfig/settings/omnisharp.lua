@@ -60,7 +60,7 @@ local M = {
 }
 
 if vim.loop.os_uname().sysname == "Windows_NT" then
-  M.cmd = { "dotnet", "C:/Users/Charles/AppData/Local/nvim-data/mason/packages/omnisharp/libexec/OmniSharp.dll" }
+  M.cmd = { "dotnet", "C:/Users/lueng/AppData/Local/nvim-data/mason/packages/omnisharp/libexec/OmniSharp.dll" }
 end
 
 return M

@@ -4,6 +4,7 @@
 ---@type ChadrcConfig
 local M = {
   ui = {
+    transparenc = true,
     tabufline = {
       -- order = { "treeOffset", "tabs" },
     },
@@ -21,19 +22,29 @@ local M = {
     -- telescope = { style = "bordered" }, -- borderless / bordered
     telescope = { style = "borderless" }, -- borderless / bordered
   },
+  base46 = {
+    theme = "onedarkCus",
+    transparenc = true,
+    hl_override = {
+      LineNr = {fg = "light_grey"},
+      Comment = { italic = true, fg = "light_grey" },
+      ["@comment"] = { italic = true, fg = "light_grey" },
+    },
+  },
 }
 
 M.lsp = {
   signature = true,
 }
 
-M.base46 = {
-  theme = "onedark",
-  -- hl_override = {
-  -- 	Comment = { italic = true },
-  -- 	["@comment"] = { italic = true },
-  -- },
-}
+-- M.base46 = {
+--   theme = "onedarkCus",
+--   transparenc = true
+--   -- hl_override = {
+--   -- 	Comment = { italic = true },
+--   -- 	["@comment"] = { italic = true },
+--   -- },
+-- }
 
 M.term = {
   hl = "Normal:term,WinSeparator:WinSeparator",
