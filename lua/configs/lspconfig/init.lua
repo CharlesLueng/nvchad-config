@@ -139,7 +139,7 @@ M.capabilities.textDocument.foldingRange = {
 }
 
 local lspconfig = require "lspconfig"
-local servers = { "omnisharp", "dartls", "lua_ls", "pyright", "tsserver", "volar", "vuels", "cssls" }
+local servers = { "omnisharp", "dartls", "lua_ls", "pyright", "ts_ls", "volar", "vuels", "cssls" }
 
 -- lsps with default config
 for _, lsp in ipairs(servers) do

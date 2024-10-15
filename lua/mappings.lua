@@ -10,7 +10,7 @@ nomap("n", "<C-h>")
 nomap("n", "<C-l>")
 nomap("n", "<C-j>")
 nomap("n", "<C-k>")
-nomap("n", "<leader>cc")
+-- nomap("n", "<leader>cc")
 
 nomap("n", "<leader>wk")
 nomap("n", "<leader>wK")

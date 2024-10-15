@@ -683,7 +683,8 @@ return {
       workspaces = {
         {
           name = "personal",
-          path = "D:\\Data\\Obsidian",
+          -- path = "D:\\Data\\Obsidian",
+          path = "/mnt/d/Data/Obsidian/",
         },
         -- {
         --   name = "work",
